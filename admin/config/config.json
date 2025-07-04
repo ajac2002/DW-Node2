@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Admin123!",
+    "database": "mi_base",
+    "host": "127.0.0.1",
+    "port": 3307,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Admin123!",
+    "database": "mi_base",
+    "host": "127.0.0.1",
+    "port": 3307,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Admin123!",
+    "database": "mi_base",
+    "host": "127.0.0.1",
+    "port": 3307,
+    "dialect": "mysql"
+  }
+}
+
