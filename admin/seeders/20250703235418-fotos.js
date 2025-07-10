@@ -9,7 +9,7 @@ module.exports = {
         titulo: 'fotos'+i,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         calification: (Math. random ()*10). toFixed (2),
-        ruta: 'public/images/'+ 'fotos'+i+'.png',
+        ruta: 'public/images/'+'fotos'+i+'.png',
         createdAt: new Date(),
         updatedAt: new Date()
       }],{});
