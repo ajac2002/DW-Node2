@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.foto.belongsToMany(models.etiqueta, {
+        through: 'fotoetiquetas',  // nombre de la tabla intermedia
+        foreignKey: 'foto_id',          // alias para incluir etiquetas en consultas
+      });
     }
   }
   foto.init({

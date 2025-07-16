@@ -3,31 +3,36 @@ var router = express.Router();
 
 const Sequelize = require('sequelize');
 const Foto = require('../models').foto;
+const Etiqueta = require('../models').etiqueta;
 
 router.get('/findAll/json', function(req, res, next) {
-
-
     Foto.findAll({
-        attributes: { exclude: ["updatedAt"] }
+        attributes: { exclude: ["updatedAt"] },
+        include: [{
+            model: Etiqueta,
+            attributes: ['texto'],
+            through: { attributes: [] } // Oculta datos de tabla intermedia
+        }],
     })
     .then(fotos => {
         res.json(fotos);
     })
-    .catch(error => res.status(400).send(error))
-
+    .catch(error => res.status(400).send(error));
 });
 
 router.get('/findAll/view', function(req, res, next) {
-
-
-    Foto.findAll({
-        attributes: { exclude: ["updatedAt"] }
-    })
-    .then(fotos => {
-        res.render('fotos', { title: 'Fotos', arrFotos: fotos });
-    })
-    .catch(error => res.status(400).send(error))
-    
+  Foto.findAll({
+    attributes: { exclude: ["updatedAt"] },
+    include: [{
+      model: Etiqueta,
+      attributes: ['texto'],
+      through: { attributes: [] }
+    }],
+  })
+  .then(fotos => {
+    res.render('fotos', { title: 'Fotos', arrFotos: fotos });
+  })
+  .catch(error => res.status(400).send(error));
 });
 
 module.exports = router;

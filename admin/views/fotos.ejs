@@ -21,6 +21,7 @@
           <th>Descripción</th>
           <th>Calificación</th>
           <th>Imagen</th>
+          <th>Etiquetas</th>
         </tr>
       </thead>
       <tbody>
@@ -30,7 +31,18 @@
             <td><%= foto.titulo %></td>
             <td><%= foto.description %></td>
             <td><%= foto.calification %></td>
-            <td><img src="/images/<%= foto.ruta %>" width="100"></td>
+            <td><img src="/images/<%= foto.ruta.replace(/^public\/images\//, '') %>" width="100"></td>
+            <td>
+              <% if (foto.etiqueta && foto.etiqueta.length) { %>
+                <ul class="list-unstyled mb-0">
+                  <% foto.etiqueta.forEach(etiqueta => { %>
+                    <li><%= etiqueta.texto %></li>
+                  <% }) %>
+                </ul>
+              <% } else { %>
+                <em>Sin etiquetas</em>
+              <% } %>
+            </td>
           </tr>
         <% }) %>
       </tbody>
